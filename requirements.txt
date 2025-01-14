@@ -1,0 +1,6 @@
+pytz
+python-dotenv
+redis
+supabase
+curl_cffi
+telebot

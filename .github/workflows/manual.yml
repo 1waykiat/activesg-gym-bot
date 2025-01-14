@@ -1,0 +1,38 @@
+# This is a basic workflow that is manually triggered
+
+name: ActiveSG Gym Capacity Tracker
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+  # schedule:
+    # - cron: '0 * * * *'
+
+jobs:
+  check-capacity:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        pip install pytz
+        pip install python-dotenv
+        pip install redis
+        pip install curl_cffi
+        
+    - name: Run code
+      env:
+        REDIS_HOST: ${{ secrets.REDIS_HOST }}
+        REDIS_PORT: ${{ secrets.REDIS_PORT }}
+        REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
+      run: |
+        python main.py
