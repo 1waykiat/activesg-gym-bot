@@ -17,11 +17,9 @@ Key Features:
 
 ## Accessing the Bot
 
-## Accessing the Bot
-
 The ActiveSG GymBot can be accessed through Telegram [here](https://t.me/activeSG_gym_bot).
 
-Alternatively, scan the QR code below:
+Alternatively, scan the QR code:
 <img src="images/qr_code.jpg" alt="screenshot" width="250"/>
 
 Example Commands:
