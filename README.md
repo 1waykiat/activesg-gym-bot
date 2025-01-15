@@ -4,7 +4,7 @@
 
 The **GymBot** helps users monitor current gym capacity and analyze average gym crowd trends over time. Designed as a telegram bot, it provides a convenient way for users to plan gym visits based on the live capacities as well as historical average trends.
 
-Key Features:
+**Key Features**:
 - 📊 View current gym capacity at a glance
 - 📈 Analyze average gym usage trends
 - 🌐 All with quick easy commands through the telegram bot
