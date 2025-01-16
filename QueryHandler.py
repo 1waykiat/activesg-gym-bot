@@ -18,26 +18,28 @@ Start off with one of the 2 commands below! For full list of commands and what t
     '''
     
     def help(self):
-        return '''List of Commands ⚙️:
+        return '''List of Commands ⚙️
     
 /start - Initialize bot
 /help - List all commands and additional information on bot
 /current - View current gym capacities for all gyms
 /average - View average gym capacity data of selected gym for all hours for current day
-/info - Get additional miscellaneous info on bot
+/info - Get additional misc. information on bot
     '''
     
     def info(self):
-        return '''<b>Additional Information</b>
+        return '''<b>Additional Information ℹ️</b>
     
-<u>Capacity level to Color Code:</u>
+<u>Capacity Level Color Code:</u>
 🟢 0% - 19%
 🟡 20% - 39%
 🟠 40% - 59%
 🔴 60% - 100%
     
 <u>Regarding average gym capacity data:</u>
-Gym capacity averages are being calculated from historical data tracked up to 2 months ago
+All gym capacity data is colleted from https://activesg.gov.sg/gym-capacity.
+Gym capacity averages are being calculated from historical data tracked up to 2 months ago.
+For further information, visit https://github.com/1waykiat/activesg-gym-bot.
     
     '''
      
