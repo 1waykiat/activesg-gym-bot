@@ -30,6 +30,17 @@ class GymDataManager:
             print('Error: ', e)
             
     def get_avg_cap(self, gym_name, day):
+        """
+            get_average_capacity_gym rpc function:
+            select 
+                gym_capacities.hour,
+                round(avg(gym_capacities.capacity)) AS average_capacity
+            from gym_capacities
+            where
+                gym_capacities.gym_name = $1 and
+                gym_capacities.day = $2
+            group by gym_capacities.hour;
+        """
         try:
             data = self.supabase.rpc("get_average_capacity_gym", {
                 "gym_name": gym_name,
