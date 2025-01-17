@@ -29,6 +29,12 @@ class GymDataManager:
         except Exception as e:
             print('Error: ', e)
             
+    def add_bulk_entry_to_supabase(self, entries):
+        try:
+            self.supabase.rpc("add_gym_entries", {"entries": entries}).execute()
+        except Exception as e:
+            print('Error: ', e)
+            
     def get_avg_cap(self, gym_name, day):
         """
             get_average_capacity_gym rpc function:

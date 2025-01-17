@@ -39,8 +39,10 @@ class GymDataTracker:
         
     def saveGymDataToSupabase(self, gym_data, time_hr_pm, day):
         print("Saving extracted gym data to Supabase...")
+        entries = []
         for gym_name, capacity in gym_data.items():
-            self.gdm.add_entry_to_supabase(gym_name, day, time_hr_pm, capacity)
+            entries.append({"gym_name": gym_name, "day": day, "hour": time_hr_pm, "capacity": capacity})
+        self.gdm.add_bulk_entry_to_supabase(entries)
         print("Save Completed!")
         
     # Closes various sessions before terminating process
