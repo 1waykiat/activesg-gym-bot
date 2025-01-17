@@ -57,3 +57,11 @@ The bot is responsible for user interactions via Telegram and is built using the
    - Real-time capacity data fetched by `GymDataTracker.py` is stored in the database.
 2. **Data Querying**:
    - Historical and average data is fetched using custom SQL queries made via the Supabase RPC interface.
+
+---
+
+## Support
+
+If you enjoy this project and would like to support further development, consider supporting me on Ko-Fi! Suggestions and reccomendations provided through these tips will be prioritised.
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/H2H41937UU)
