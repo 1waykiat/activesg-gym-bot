@@ -30,6 +30,10 @@ class GymDataTracker:
         # Processing JSON data, converting to Dict 
         gym_data = self.jsh.extractGymCapacityData(json_data)
         
+        if not self.jsh.isOpen(json_data):
+            print("Gyms closed during usual hours, stopping further tasks...")
+            self.clean_up()
+            
         # Adding new data to the db
         self.saveGymDataToSupabase(gym_data, self.tm.getHourAMPM(), self.tm.getCurrentDay())
         

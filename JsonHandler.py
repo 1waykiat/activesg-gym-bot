@@ -8,11 +8,18 @@ class JsonHandler:
         gyms_json = json_data['result']['data']['json']['gymFacilities']
         gym_data = dict()
 
-        for gym in gyms_json:   
-            gym_data[gym['name']] = gym['capacityPercentage']
+        for gym in gyms_json:
+            if not gym["isClosed"]:
+                gym_data[gym['name']] = gym['capacityPercentage']
         
-        print("Successfully extracted gym data!")
+        print(f"Successfully extracted gym data for {len(gym_data)} gyms")
         print(json.dumps(gym_data, indent= 4, sort_keys=True))
             
         return gym_data
     
+    def isOpen(self, json_data):
+        gyms_json = json_data['result']['data']['json']['gymFacilities']
+        
+        return not gyms_json[0]["isClosed"]
+            
+        

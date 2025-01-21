@@ -37,7 +37,6 @@ Start off with one of the 2 commands below! For full list of commands and what t
 🔴 60% - 100%
     
 <u>Regarding average gym capacity data:</u>
-All gym capacity data is colleted from https://activesg.gov.sg/gym-capacity.
 Gym capacity averages are being calculated from historical data tracked up to 2 months ago.
 For further information, visit https://github.com/1waykiat/activesg-gym-bot.
     
@@ -60,9 +59,9 @@ For further information, visit https://github.com/1waykiat/activesg-gym-bot.
             text += f"\n{self.capacity_colour(entry['average_capacity'])} {entry['hour']}: <b>{entry['average_capacity']}</b> % {'(<b>Current Hour</b> ⏰)' if hour == entry['hour'] else ''}"
         
         # Compare current capacity with average capacity text block
-        if (self.tm.checkValidTime()):
-            json_data = self.ds.requestJSONData()
-            gym_data = self.jsh.extractGymCapacityData(json_data)
+        json_data = self.ds.requestJSONData()
+        gym_data = self.jsh.extractGymCapacityData(json_data)
+        if (self.tm.checkValidTime() and self.jsh.isOpen(json_data)):
             curr_capacity = gym_data[gym_name]
             
             text += f"\n\n 👥 Current Capacity: <b>{curr_capacity}</b> %\n"
@@ -85,12 +84,12 @@ For further information, visit https://github.com/1waykiat/activesg-gym-bot.
         
     
     def current_cap(self):
-        if not self.tm.checkValidTime():
-            return "🚫 ActiveSG Gyms are currently closed!"
-
         json_data = self.ds.requestJSONData()
         gym_data = self.jsh.extractGymCapacityData(json_data)
         
+        if not self.tm.checkValidTime() or not self.jsh.isOpen(json_data):
+            return "🚫 ActiveSG Gyms are currently closed!"
+
         text = "🏋 Gym capacities at the current moment: 🏋\n"
         for gym_name, capacity in gym_data.items():
             text += f"\n{self.capacity_colour(capacity)} {gym_name}: <b>{capacity}</b> %"
